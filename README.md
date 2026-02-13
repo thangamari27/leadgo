@@ -128,7 +128,7 @@ Frontend will run on:
 ```
 http://localhost:5173
 ```
-
+---
 # Backend Setup
 
 ### 1️⃣ Navigate to server folder
@@ -160,6 +160,25 @@ npm run dev
 Server will run on:
 ```
 http://localhost:5000
+```
+# Webhook Setup
+
+### 1️⃣ Get a Webhook UR
+1. Open: https://webhook.site
+
+2. Copy your unique URL
+
+Example:
+```bash
+https://webhook.site/123e4567-e89b-12d3-a456-426614174000
+```
+
+### 2️⃣ Add Webhook URL to Backend
+Inside /server/.env:
+
+```bash
+WEBHOOK_SITE_URL=https://webhook.site/your-unique-id
+WEBHOOK_TIMEOUT=5000
 ```
 
 ---

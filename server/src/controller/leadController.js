@@ -1,5 +1,6 @@
 const { validationResult } = require('express-validator');
 const leadService = require('../service/leadService');
+const webhookService = require('../service/webhookService');
 
 class LeadController {
   // POST /api/leads
@@ -19,9 +20,16 @@ class LeadController {
       return res.status(400).json({ message: result.error });
     }
     
+    const newLead = result.data;
+
+    // Trigger webhook asynchronously - don't await, don't block response
+    webhookService.sendLeadToWebhook(newLead).catch(error => {
+      console.error('Webhook failed:', error.message);
+    });
+    
     res.status(201).json({
       message: 'Lead created successfully',
-      lead: result.data
+      lead: newLead
     });
   }
 

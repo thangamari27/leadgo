@@ -35,7 +35,7 @@ export const LeadProvider = ({ children }) => {
 
   const addLead = async (leadData) => {
     try {
-      const newLead = await leadApi.createLead(leadData); 
+      const newLead = await leadApi.createLead(leadData);
       setLeads(prev => [newLead, ...prev]);
       return newLead;
     } catch (error) {
@@ -46,7 +46,7 @@ export const LeadProvider = ({ children }) => {
 
   const getLeadById = async (id) => {
     try {
-      const lead = await leadApi.fetchLeadById(id); 
+      const lead = await leadApi.fetchLeadById(id);
       return lead;
     } catch (error) {
       console.error('Failed to fetch lead:', error);
